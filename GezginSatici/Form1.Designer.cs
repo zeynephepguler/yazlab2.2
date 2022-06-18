@@ -40,7 +40,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(10, 609);
+            this.button1.Location = new System.Drawing.Point(10, 528);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(194, 85);
@@ -102,9 +102,9 @@
             // 
             // listView2
             // 
-            this.listView2.Location = new System.Drawing.Point(44, 701);
+            this.listView2.Location = new System.Drawing.Point(1092, 157);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(151, 121);
+            this.listView2.Size = new System.Drawing.Size(445, 569);
             this.listView2.TabIndex = 7;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
@@ -113,7 +113,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1293, 868);
+            this.ClientSize = new System.Drawing.Size(1549, 786);
             this.Controls.Add(this.listView2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);

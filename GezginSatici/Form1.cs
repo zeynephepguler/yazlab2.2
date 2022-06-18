@@ -3,8 +3,11 @@
     public partial class Form1 : Form
     {
         public List<Location> location = new List<Location>();
+        public List<Location> location2 = new List<Location>();
+        public List<int> uzaklık = new List<int>();
         public int count = 0;
         public int s;
+        int sayac = -1;
         public Form1()
         {
             InitializeComponent();
@@ -14,6 +17,7 @@
             if (count == s) { return; }
             listView1.Items.Add("Konum"+(count+1).ToString()+": X:"+e.X.ToString()+" Y:" + e.Y.ToString() );
             location.Add(new Location() { A = e.X, B = e.Y });
+            location2.Add(new Location() { A = e.X, B = e.Y });
             Label namelabel = new Label();
             namelabel.Parent = pictureBox1;
             namelabel.Width = 0;
@@ -62,40 +66,50 @@
             var sabit = 0;
             foreach (var item in location)
             {
-                foreach (var item2 in location)
+                sayac++;
+                location2.Remove(item);
+                foreach (var item2 in location2)
                 {
-                    if (item2 == item) { }
-                    else
-                    {
+                   
 
 
                         var eski = sabit;
                         var maliyet1 = 0;
-                        maliyet1 = ((Math.Abs(item.A ^ 2 - item2.A ^ 2) + Math.Abs(item.B ^ 2 - item2.B ^ 2)) ^ 1 / 2);
+                        maliyet1 = ((Math.Abs(item.A - item2.A)^2 + Math.Abs(item.B- item2.B)^2) ^ 1 / 2);
+                        
                         if (eski == 0)
                         {
                             eski = maliyet1;
                         }
                         sabit = maliyet1;
 
+                        //uzaklık.Add(maliyet1);
+                        //uzaklık.Sort();
 
-
-                        string maliyet = maliyet1.ToString();
+                        string maliyet = sayac.ToString();
                         listView2.Items.Add(maliyet);
+                        
 
                         if (maliyet1 < eski)
                         {
                             Graphics myCanvas = pictureBox1.CreateGraphics();
                             Pen graph = new Pen(Color.Blue, 4);
                             myCanvas.DrawLine(graph, new Point(item.A, item.B), new Point(item2.A, item2.B));
-
+                                                        
+                        }
+                        else
+                        {
+                            Graphics myCanvas = pictureBox1.CreateGraphics();
+                            Pen graph = new Pen(Color.Red, 4);
+                            myCanvas.DrawLine(graph, new Point(item.A, item.B), new Point(item2.A, item2.B));
                         }
                        
 
                     }
+                    
                 }
             }
-        }
+        
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
