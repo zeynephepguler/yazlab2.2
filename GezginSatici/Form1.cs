@@ -59,9 +59,43 @@
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var sabit = 0;
+            foreach (var item in location)
+            {
+                foreach (var item2 in location)
+                {
+                    if (item2 == item) { }
+                    else
+                    {
 
+
+                        var eski = sabit;
+                        var maliyet1 = 0;
+                        maliyet1 = ((Math.Abs(item.A ^ 2 - item2.A ^ 2) + Math.Abs(item.B ^ 2 - item2.B ^ 2)) ^ 1 / 2);
+                        if (eski == 0)
+                        {
+                            eski = maliyet1;
+                        }
+                        sabit = maliyet1;
+
+
+
+                        string maliyet = maliyet1.ToString();
+                        listView2.Items.Add(maliyet);
+
+                        if (maliyet1 < eski)
+                        {
+                            Graphics myCanvas = pictureBox1.CreateGraphics();
+                            Pen graph = new Pen(Color.Blue, 4);
+                            myCanvas.DrawLine(graph, new Point(item.A, item.B), new Point(item2.A, item2.B));
+
+                        }
+                       
+
+                    }
+                }
+            }
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -74,7 +108,12 @@
                 s = isayi;
             string mesaj = "Rota Sayısı Seçildi";
             MessageBox.Show(mesaj);
-        } 
+        }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
 
